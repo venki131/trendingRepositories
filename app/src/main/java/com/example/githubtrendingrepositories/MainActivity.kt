@@ -1,26 +1,29 @@
 package com.example.githubtrendingrepositories
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
-import com.example.githubtrendingrepositories.presentation.view_models.TrendingRepoViewModel
+import android.view.Menu
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private val viewModel: TrendingRepoViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        viewModel.getTrendingRepo()
-        observe()
+        navHost()
     }
 
-    private fun observe() {
-        viewModel.liveData.observe(this) {
-            println("resulting value = $it")
-        }
+    private fun navHost() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        navController.navigate(R.id.nav_graph)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.user_menu, menu)
+        return true
     }
 }

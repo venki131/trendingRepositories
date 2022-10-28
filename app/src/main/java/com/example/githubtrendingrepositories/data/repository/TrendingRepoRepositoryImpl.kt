@@ -17,6 +17,10 @@ class TrendingRepoRepositoryImpl @Inject constructor(
         spokenLangCode: String?
     ): Resource<ArrayList<TrendingRepo>> {
         return try {
+            Resource.Loading(
+                loadingStatus = true,
+                data = null
+            )
             Resource.Success(
                 data = api.getTrendingRepo(
                     language,
