@@ -1,6 +1,6 @@
 *.iml
 .gradle
-.gradlew
+/gradlew
 /local.properties
 /.idea/caches
 /.idea/libraries
@@ -10,9 +10,11 @@
 /.idea/assetWizardSettings.xml
 .DS_Store
 /build
+/libs
 /captures
 .externalNativeBuild
 .cxx
+/.idea
 local.properties
 /app/
 /shelf/
